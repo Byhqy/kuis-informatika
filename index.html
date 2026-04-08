@@ -423,6 +423,39 @@ function load(){
     if(c) CFG = {...CFG, ...JSON.parse(c)};
   }catch(e){}
 
+  // 🔥 TAMBAHAN WAJIB
+  if(!DB || DB.length === 0){
+    DB = [
+      {
+        q: "Algoritma adalah...",
+        opts: ["Langkah sistematis","Hardware","Internet","Data"],
+        ans: 0
+      },
+      {
+        q: "CPU adalah...",
+        opts: ["Otak komputer","Monitor","Keyboard","Mouse"],
+        ans: 0
+      },
+      {
+        q: "Bilangan biner terdiri dari...",
+        opts: ["0 dan 1","1 dan 2","0-9","A-Z"],
+        ans: 0
+      }
+    ];
+  }
+
+  updateStats();
+  applyCFG();
+}
+  
+  try{
+    const s = localStorage.getItem('iq_db');
+    if(s) DB = JSON.parse(s);
+
+    const c = localStorage.getItem('iq_cfg');
+    if(c) CFG = {...CFG, ...JSON.parse(c)};
+  }catch(e){}
+
   // 🔥 TAMBAHAN INI (PENTING)
   if(!DB || DB.length === 0){
     DB = [
